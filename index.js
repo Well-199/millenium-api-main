@@ -1,23 +1,14 @@
 require('dotenv').config()
 const express = require('express')
-const mongoose = require('mongoose')
+const connection = require('./src/connection/mongodb')
 const fileUpload = require('express-fileupload')
 const cors = require('cors')
 
-function connection(){
-    mongoose.connect(process.env.DATABASE, (err) => {
-        if(err){
-            console.log(err)
-        }else{
-            console.log("Connected successfully on mongodb")
-        }
-    })
-}
 connection()
 
-const routes = require('./src/routes/routes')
-
 const server = express()
+
+const routes = require('./src/routes/routes')
 
 server.use(cors())
 server.use(express.json())
