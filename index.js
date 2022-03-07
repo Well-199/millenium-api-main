@@ -4,16 +4,18 @@ const connection = require('./src/connection/mongodb')
 const fileUpload = require('express-fileupload')
 const cors = require('cors')
 
+const routes = require('./src/routes/routes')
+
 connection()
 
 const server = express()
-
-const routes = require('./src/routes/routes')
 
 server.use(cors())
 server.use(express.json())
 server.use(express.urlencoded({ extended: false }))
 server.use(fileUpload())
+
+server.use(express.static(__dirname+'/public'))
 
 server.use('/api', routes)
 
