@@ -2,7 +2,7 @@ usuarios
 - id
 - nome
 - email
-- estado
+- estado_id
 - passwordHash
 - token
 
