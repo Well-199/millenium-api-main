@@ -18,6 +18,7 @@ const AuthController = {
             return
         }
 
+        // ao buscar o usuario eu istancio o Model Usuario em user
         const user = await Usuario.findOne({email: email})
 
         if(!user){
@@ -37,6 +38,7 @@ const AuthController = {
         const payload = (Date.now() + Math.random()).toString()
         const token = await bcrypt.hash(payload, 10)
 
+        // metodo save é usado porque o model Usuario foi istanciado em user
         user.token = token
         await user.save()
 
