@@ -10,7 +10,8 @@ const AnuncioController =  require('../controllers/AnuncioController')
 router.post('/user/signin', AuthController.signin)
 
 router.post('/anuncio/add', AnuncioController.addAction)
-router.get('/ad/list', AnuncioController.getList)
-router.post('/ad/:id', AnuncioController.editAction)
+router.get('/anuncios/list', AnuncioController.getList)
+router.get('/anuncios/filter', AnuncioController.adsFilter)
+router.post('/anuncio/:id', AnuncioController.editAction)
 
 module.exports = router

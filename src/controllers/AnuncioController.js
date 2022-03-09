@@ -76,6 +76,29 @@ const AnuncioController = {
 
     async getList (req, res){
 
+        const anuncios = await Anuncio.find().exec()
+
+        let json = []
+
+        for(let i in anuncios){
+
+            json.push({
+                id: anuncios[i]._id,
+                titulo: anuncios[i].titulo,
+                valor: anuncios[i].valor,
+                descricao: anuncios[i].descricao,
+                criacao: anuncios[i].created,
+                views: anuncios[i].views,
+                status: anuncios[i].status,
+                imagem: `${process.env.BASE}/images/${anuncios[i].imagens}`
+            })
+        }
+
+        res.json({result: json})
+    },
+
+    async adsFilter (req, res){
+
     },
 
     async editAction (req, res){
