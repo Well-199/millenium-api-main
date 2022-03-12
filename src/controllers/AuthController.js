@@ -42,7 +42,7 @@ const AuthController = {
         user.token = token
         await user.save()
 
-        res.json({result: token})
+        res.json({ token })
     },
     
 }
