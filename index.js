@@ -17,6 +17,12 @@ server.use(fileUpload())
 
 server.use(express.static(__dirname+'/public'))
 
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', "*")
+    server.use(cors())
+    next()
+})
+
 server.use('/api', routes)
 
 server.use((req, res) => {
